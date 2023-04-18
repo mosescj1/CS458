@@ -1,0 +1,28 @@
+{
+  "name": "cs458",
+  "version": "1.0.0",
+  "description": "This is the repository for decentralized casino",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^9.1.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^6.7.3",
+    "json-loader": "^0.5.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "style-loader": "^3.3.2",
+    "web3": "^0.20.0",
+    "webpack": "^5.79.0"
+  }
+}
