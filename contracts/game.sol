@@ -3,7 +3,7 @@ pragma solidity ^0.8.19;
 
 contract Casino {
 
-    address  public house;
+    address  public owner;
     uint minBet = 100;
     uint totalBets = 0;
     address[] public players ;
@@ -20,7 +20,7 @@ contract Casino {
     mapping(address => Player) public playerInputs;
     
     constructor() {
-        house = msg.sender;
+        owner = msg.sender;
     }
 
     function bet(uint choice) public payable{
@@ -47,7 +47,12 @@ contract Casino {
                 playerAddr = payable(players[i]);
                 playerAddr.transfer(payout);
         }
+        for(uint i = 0; i < players.length; i++){
+            delete playerInputs[players[i]];
+        }
+        delete players;
+
         
     }   
-
+    function falllback() public payable{}
 }
