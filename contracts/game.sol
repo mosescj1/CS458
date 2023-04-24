@@ -41,10 +41,11 @@ contract Casino {
             }
         }
         payout = totalBets/totalWinners;
+        address payable playerAddr;
         for(uint i = 0; i < players.length; i++){
-            address payable playerAdd = players[i];
             if(playerInputs[players[i]].winnerFlag && players[i] != address(0))
-                players[i].transfer(payout);
+                playerAddr = payable(players[i]);
+                playerAddr.transfer(payout);
         }
         
     }   
