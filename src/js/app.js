@@ -52,6 +52,19 @@ async activateWeb3() {
   this.contractInstance = contract;
 }
 
+async mountedComponent(){
+  await this.activateWeb3();
+  await this.updateState();
+}
+
+async updateState() {
+
+}
+
+async voteNumber(number){
+  
+}
+
 render() {
     return (
         <div className = "main-body">
