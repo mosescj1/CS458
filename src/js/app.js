@@ -56,7 +56,47 @@ render() {
 
             <h2>Vote for the next number</h2>
 
-            <label></label>
+            <label>
+                <b>
+                    How much ether do you want to bet?{" "}
+                    <input 
+                        className="better-input"
+                        ref="ether-bet"
+                        type="number"
+                        onChange={evt => {
+                            this.setState({
+                                currentBet: evt.target.value
+                            });
+                        }}
+                        placeholder={"Enter Bet"}
+                    />
+                </b>{" "}
+                ether
+                <br />
+            </label>
+
+            <ul ref="numbers">
+          {this.validBets.map(bet => {
+            return (
+              <li
+                onClick={() => {
+                  this.voteNumber(bet);
+                }}
+              >
+                {bet}
+              </li>
+            );
+          })}
+        </ul>
+
+        <br></br>
+
+          <div>
+            <i>Vote will be reflected once next block is mined</i>
+          </div>
+          <div>
+            <i>Only working in test environment</i>
+          </div>
 
         </div>
     );
