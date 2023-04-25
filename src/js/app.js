@@ -8,7 +8,7 @@ class app extends React.Component{
     constructor(props){
         super(props);
 
-        this.conttractAddress = "";//contract address here;
+        this.contractAddress = "";//contract address here;
 
         //swap values to what you want
         this.validBets = [1,2,3,4,5,6,7,8,9,10];
@@ -40,6 +40,11 @@ render() {
             <div className = "main-blocks">
                 <b>Total ether bet:</b>
                 <span>{this.state.totalBet} ether</span>
+            </div>
+
+            <div className = "main-blocks">
+                <b>Your current bet:</b>
+                <span>{this.state.currentBet} ether</span>
             </div>
 
             <div className = "main-blocks">
