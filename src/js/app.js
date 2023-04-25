@@ -59,6 +59,10 @@ async mountedComponent(){
 
 async updateState() {
  //this will call all of the variables used in the contract to update the information whenever someone submits a bet
+ const minimumBet = await this.contractInstance.methods.minimumBet().call();
+    this.setState({
+      minimumBet: parseFloat(Web3.utils.fromWei(minimumBet, "ether"))
+    });
 }
 
 async voteNumber(number){
