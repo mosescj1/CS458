@@ -58,11 +58,11 @@ async mountedComponent(){
 }
 
 async updateState() {
-
+ //this will call all of the variables used in the contract to update the information whenever someone submits a bet
 }
 
 async voteNumber(number){
-  
+//this takes in a number bet by a user and then will make sure it fits all of the conditions before it accepts the bet
 }
 
 render() {
