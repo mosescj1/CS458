@@ -3,12 +3,13 @@ import Web3 from "web3";
 
 import "./css/app.css";
 
+const INFURA_KEY = "key from infura";
 
 class app extends React.Component{
     constructor(props){
         super(props);
 
-        this.contractAddress = "";//contract address here;
+        this.contractAddress = "contract address once deployed";//contract address here;
 
         //swap values to what you want
         this.validBets = [1,2,3,4,5,6,7,8,9,10];
@@ -21,6 +22,35 @@ class app extends React.Component{
             currentBet: 0
         };
     }
+
+async activateWeb3() {
+  if (window.ethereum){
+    window.web3 = new Web3(window.ethereum);
+    try {
+      await window.ethereum.enable();
+    } catch (error) {
+      console.log("Access Denied");
+    }
+  }
+
+  if (typeof Web3 != "undefined"){
+    console.log("Using Web3 detected from rexternal source");
+    this.web3 = new Web3(window.ethereum);
+  } else {
+    console.log("no Web3 detected. Returning to HTTPS");
+    this.web3 = new Web3(
+      new Web3.providers.HttpProvider(
+        `https://ropsten.infura.io/v3/${INFURA_KEY}`
+      )
+    );
+  }
+
+  const contract = new this.web3.eth.Contract(
+    ABI,
+    this.contractAddress
+  );
+  this.contractInstance = contract;
+}
 
 render() {
     return (
