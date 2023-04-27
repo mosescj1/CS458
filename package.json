@@ -4,11 +4,20 @@
   "description": "This is the repository for decentralized casino",
   "main": "truffle-config.js",
   "directories": {
-    "test": "test"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@truffle/hdwallet-provider": "^1.0.32",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-scripts": "^5.0.1",
+    "web3": "^1.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "author": "",
   "license": "ISC",
