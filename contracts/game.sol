@@ -7,8 +7,8 @@ contract Casino {
     uint minBet = 100;
     uint totalBets = 0;
     address[] public players ;
-    uint totalWinners = 0;
     uint payout = 0;
+    uint numOfBets = 0;
 
     struct Player{
         uint bet;
@@ -18,13 +18,8 @@ contract Casino {
 
     mapping(address => Player) public playerInputs;
     
-    constructor (uint256 _minBet) {
+    constructor () {
         owner = msg.sender;
-        if (_minBet > 0 ) minBet = _minBet;
-    }
-
-    function endGame () public {
-        if (msg.sender == owner) selfdestruct(payable(owner));
     }
 
     function bet(uint choice) public payable{
@@ -33,13 +28,16 @@ contract Casino {
         playerInputs[msg.sender].choice = choice;
         playerInputs[msg.sender].winnerFlag = false;
         totalBets += msg.value;
+        numOfBets ++;
         players.push(msg.sender);
+        if(numOfBets >= 3) generateRandom();
     }
 
-    function winner(uint choice)public {
+    function winner(uint winningNum)public {
+        uint totalWinners = 0;
         for(uint i = 0; i < players.length; i++){
             
-            if(playerInputs[players[i]].choice == choice){
+            if(playerInputs[players[i]].choice == winningNum){
                 playerInputs[players[i]].winnerFlag = true;
                 totalWinners++;
             }
@@ -57,10 +55,9 @@ contract Casino {
         delete players;
     }   
 
-    function generateRandom() public {
-        uint256 num = block.number % 10 + 1;
-        // call to distribution function here!
-        
+    function generateRandom() private {
+        uint256 win= (block.number %10 * block.timestamp%5) %2;
+        winner(win);
     }
 
     function falllback() public payable{}
