@@ -12,7 +12,6 @@ contract Casino {
 
     struct Player{
         uint bet;
-        //placeholder for choice
         uint choice;
         bool winnerFlag;
     }
