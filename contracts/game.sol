@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
 
@@ -59,9 +60,8 @@ contract Casino {
 
     function generateRandom() public {
         uint256 num = block.number % 10 + 1;
-        // call to distribution function here!
-        
+        winner(num);
     }
 
-    function falllback() public payable{}
+    // fallback() external payable{}
 }
