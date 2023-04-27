@@ -3,7 +3,7 @@ pragma solidity ^0.8.19;
 
 contract Casino {
 
-    address  public owner;
+    address public owner;
     uint minBet = 100;
     uint totalBets = 0;
     address[] public players ;
@@ -19,8 +19,13 @@ contract Casino {
 
     mapping(address => Player) public playerInputs;
     
-    constructor() {
+    constructor (uint256 _minBet) {
         owner = msg.sender;
+        if (_minBet > 0 ) minBet = _minBet;
+    }
+
+    function endGame () public {
+        if (msg.sender == owner) selfdestruct(payable(owner));
     }
 
     function bet(uint choice) public payable{
@@ -51,8 +56,13 @@ contract Casino {
             delete playerInputs[players[i]];
         }
         delete players;
-
-        
     }   
+
+    function generateRandom() public {
+        uint256 num = block.number % 10 + 1;
+        // call to distribution function here!
+        
+    }
+
     function falllback() public payable{}
 }
