@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'reaact-dom'
 import Web3 from 'web3'
 import './../css/index.css'
+import app from "app"
 import { render } from 'express/lib/response'
 
 class App extends React.Component {
