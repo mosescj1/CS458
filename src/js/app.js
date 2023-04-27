@@ -12,13 +12,12 @@ class app extends React.Component{
         this.contractAddress = "contract address once deployed";//contract address here;
 
         //swap values to what you want
-        this.validBets = [1,2,3,4,5,6,7,8,9,10];
+        this.validBets = [0,1];
         this.state = {
             winningNumber: 0,
             numberOfBets: 0,
             minimumBet: 0,
             totalBet: 0,
-            maxNumberOfBets: 0,
             currentBet: 0
         };
     }
@@ -97,11 +96,6 @@ render() {
             <div className = "main-blocks">
                 <b>Minimum bet allowed:</b>
                 <span>{this.state.minimumBet}</span>
-            </div>
-
-            <div className = "main-blocks">
-                <b>Max Number of bets:</b>
-                <span>{this.state.maxNumberOfBets}</span>
             </div>
 
             <br></br>
