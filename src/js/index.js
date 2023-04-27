@@ -25,3 +25,4 @@ class App extends React.Component {
      }
 }
 
+ReactDOM.render(<app />, document.getElementById("reactStuff"));
