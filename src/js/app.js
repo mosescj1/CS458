@@ -155,3 +155,5 @@ render() {
 }
 
 }
+
+export default app;

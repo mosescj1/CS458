@@ -26,10 +26,10 @@ body {
   * {
     color: gray;
   }
-  .main-container {
+  .main-body {
     padding: 20px;
   }
-  .block {
+  .main-blocks {
     display: flex;
     align-items: center;
   }
@@ -37,7 +37,7 @@ body {
     background-color: navy;
     color: white;
   }
-  .bet-input {
+  .better-input {
     padding: 15px;
     border-radius: 10px;
     border: 1px solid lightgrey;
