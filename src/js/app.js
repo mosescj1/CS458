@@ -62,6 +62,10 @@ async updateState() {
     this.setState({
       minimumBet: parseFloat(Web3.utils.fromWei(minimumBet, "ether"))
     });
+  const winningNumber = await this.contractInstance.methods.winningNumber().call();
+    this.setState({
+      winningNumber: parseFloat(Web3.utils.fromWei(winningNumber, "ether"))
+    });
 }
 
 async voteNumber(number){
@@ -74,13 +78,18 @@ render() {
             <h1>Bet to win Ether</h1>
 
             <div className = "main-blocks">
-                <b>Number of bets:</b>
-                <span>{this.state.numberOfBets}</span>
+                <b>Last Winning Number:</b>
+                <span>{parseInt(this.state.winningNumber) === 0 ? "No draws done yet" : this.state.winningNumber}</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Last Winning Number:</b>
-                <span>{parseInt(this.state.winningNumber) === 0 ? "No draws done yet" : this.state.winningNumber}</span>
+                <b>Minimum bet allowed:</b>
+                <span>{this.state.minimumBet}</span>
+            </div>
+
+            <div className = "main-blocks">
+                <b>Number of bets:</b>
+                <span>{this.state.numberOfBets}</span>
             </div>
 
             <div className = "main-blocks">
@@ -91,11 +100,6 @@ render() {
             <div className = "main-blocks">
                 <b>Your current bet:</b>
                 <span>{this.state.currentBet} ether</span>
-            </div>
-
-            <div className = "main-blocks">
-                <b>Minimum bet allowed:</b>
-                <span>{this.state.minimumBet}</span>
             </div>
 
             <br></br>
