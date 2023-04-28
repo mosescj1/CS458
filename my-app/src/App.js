@@ -12,12 +12,12 @@ class app extends React.Component{
         this.contractAddress = "contract address once deployed";//contract address here;
 
         //swap values to what you want
-        this.validBets = [0,1];
+        this.validBets = ["True","False"];
         this.state = {
-            winningNumber: 0,
-            numberOfBets: 0,
+            winningChoice: 0,
+            numOfBets: 0,
             minimumBet: 0,
-            totalBet: 0,
+            totalBets: 0,
             currentBet: 0
         };
     }
@@ -62,14 +62,46 @@ async updateState() {
     this.setState({
       minimumBet: parseFloat(Web3.utils.fromWei(minimumBet, "ether"))
     });
-  const winningNumber = await this.contractInstance.methods.winningNumber().call();
+  let winningChoice = await this.contractInstance.methods.winningChoice().call();
     this.setState({
-      winningNumber: parseFloat(Web3.utils.fromWei(winningNumber, "ether"))
+      winningChoice: parseFloat(Web3.utils.fromWei(winningChoice, "ether"))
     });
+  let numOfBets = await this.contractInstance.methods.numOfBets().call();
+    this.setState({
+      numOfBets: parseFloat(Web3.utils.fromWei(numOfBets, "ether"))
+    });
+  let totalBets = await this.contractInstance.methods.totalBets().call();
+    this.setState({
+      totalBets: parseFloat(Web3.utils.fromWei(totalBets, "ether"))
+    });
+  let currentBet = await this.contractInstance.methods.currentBet().call();
+    this.setState({
+      currentBet: parseFloat(Web3.utils.fromWei(currentBet, "ether"))
+    });
+  
 }
 
-async voteNumber(number){
+async voteNumber(Word){
 //this takes in a number bet by a user and then will make sure it fits all of the conditions before it accepts the bet
+  let bet = this.state.currentBet;
+  let numConv = -1;
+
+  if(parseFloat(bet) < this.state.minimumBet){
+  alert("Bet more than the min brokey!")
+  }
+  else{
+
+  if (Word === "True") numConv = 0;
+  if (Word ==="False") numConv = 1;
+
+  const result = await this.contractInstance.methods.bet(numConv).send({
+    gas: 3000000,
+    from:
+    window.web3.eth.accounts.currentProvider.selectedAddress,
+      value: Web3.utils.toWei(bet,"ether")
+  });
+  console.log(result);
+  }
 }
 
 render() {
@@ -78,8 +110,8 @@ render() {
             <h1>Bet to win Ether</h1>
 
             <div className = "main-blocks">
-                <b>Last Winning Number:</b>
-                <span>{parseInt(this.state.winningNumber) === 0 ? "No draws done yet" : this.state.winningNumber}</span>
+                <b>Last Winning Choice:</b>
+                <span>{parseInt(this.state.winningChoicer) === 0 ? "No draws done yet" : this.state.winningChoice}</span>
             </div>
 
             <div className = "main-blocks">
@@ -89,12 +121,12 @@ render() {
 
             <div className = "main-blocks">
                 <b>Number of bets:</b>
-                <span>{this.state.numberOfBets}</span>
+                <span>{this.state.numOfBets}</span>
             </div>
 
             <div className = "main-blocks">
                 <b>Total ether bet:</b>
-                <span>{this.state.totalBet} ether</span>
+                <span>{this.state.totalBets} ether</span>
             </div>
 
             <div className = "main-blocks">
@@ -142,7 +174,7 @@ render() {
         <br></br>
 
           <div>
-            <i>Vote will be reflected once next block is mined</i>
+            <i>Choice will be reflected once next block is mined</i>
           </div>
           <div>
             <i>Only working in test environment</i>
