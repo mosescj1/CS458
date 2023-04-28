@@ -1,7 +1,7 @@
 import React from "react";
 import Web3 from "web3";
 
-import "./css/App.css";
+import "./App.css";
 
 const INFURA_KEY = "key from infura";
 
