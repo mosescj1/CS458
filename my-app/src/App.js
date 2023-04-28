@@ -45,7 +45,6 @@ async activateWeb3() {
   }
 
   const contract = new this.web3.eth.Contract(
-    ABI,
     this.contractAddress
   );
   this.contractInstance = contract;
