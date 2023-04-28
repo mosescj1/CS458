@@ -60,5 +60,10 @@ contract Casino {
         winner(win);
     }
 
-    function falllback() public payable{}
+    fallback() external payable{}
+
+    event Received(address,uint);
+    receive() external payable{
+        emit Received(msg.sender,msg.value);
+    }
 }
