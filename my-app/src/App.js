@@ -177,7 +177,7 @@ render() {
             className="better-input"
             ref="ether-bet"
             type="number"
-            step="0.01"
+            step="0.001"
             onChange={(evt) => {
               this.setState({
                 currentBet: evt.target.value,
