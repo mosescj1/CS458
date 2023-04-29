@@ -7,7 +7,7 @@ import CasinoInterface from "./build/contracts/Casino.json"
 
 const ABI = CasinoInterface.abi
 
-const INFURA_KEY = "key from infura";
+const INFURA_KEY = "90fdbe962cf8460daf4489bafc13e2b7";
 
 class app extends React.Component{
     constructor(props){
@@ -43,7 +43,7 @@ async activateWeb3() {
     console.log("no Web3 detected. Returning to HTTPS");
     this.web3 = new Web3(
       new Web3.providers.HttpProvider(
-        `https://ropsten.infura.io/v3/${INFURA_KEY}`
+        `https://sepolia.infura.io/v3/${INFURA_KEY}`
       )
     );
   }
