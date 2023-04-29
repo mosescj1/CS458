@@ -88,6 +88,19 @@ class App extends React.Component {
       this.setState({
         totalBets: parseFloat(Web3.utils.fromWei(totalBets, "ether")),
       });
+
+      if (
+        numOfBets !== this.state.numOfBets ||
+        winningChoice !== this.state.winningChoice
+        ){
+        window.location.reload();
+      } else {
+        this.setState({
+          winningChoice: winningChoice,
+          numOfBets: numOfBets
+        });
+      }
+
     } catch (error) {
       console.log("Error:", error);
     }
