@@ -4,12 +4,15 @@ pragma solidity ^0.8.19;
 contract Casino {
 
     address public owner;
-    uint constant minBet = 1;
-    uint totalBets = 0;
+    uint constant public minBet = 1;
+    uint public totalBets = 0;
     address[] public players ;
     uint payout = 0;
-    uint numOfBets = 0;
-    string winningChoice;
+    uint public numOfBets = 0;
+    string public winningChoice;
+
+
+
 
     struct Player{
         uint bet;

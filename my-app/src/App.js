@@ -57,9 +57,9 @@ async mountedComponent(){
 
 async updateState() {
  //this will call all of the variables used in the contract to update the information whenever someone submits a bet
- const minimumBet = await this.contractInstance.methods.minimumBet().call();
+ const minBet = await this.contractInstance.methods.minBet().call();
     this.setState({
-      minimumBet: parseFloat(Web3.utils.fromWei(minimumBet, "ether"))
+      minBet: parseFloat(Web3.utils.fromWei(minBet, "ether"))
     });
   let winningChoice = await this.contractInstance.methods.winningChoice().call();
     this.setState({
@@ -85,7 +85,7 @@ async voteNumber(Word){
   let bet = this.state.currentBet;
   let numConv = -1;
 
-  if(parseFloat(bet) < this.state.minimumBet){
+  if(parseFloat(bet) < this.state.minBet){
   alert("Bet more than the min brokey!")
   }
   else{
@@ -110,12 +110,12 @@ render() {
 
             <div className = "main-blocks">
                 <b>Last Winning Choice: </b>
-                <span> {parseInt(this.state.winningChoicer) === 0 ? "No draws done yet" : this.state.winningChoice}</span>
+                <span> {parseInt(this.state.winningChoice) === 0 ? "No draws done yet" : this.state.winningChoice}</span>
             </div>
 
             <div className = "main-blocks">
                 <b>Minimum bet allowed: </b>
-                <span> {this.state.minimumBet}</span>
+                <span> {this.state.minBet}</span>
             </div>
 
             <div className = "main-blocks">
