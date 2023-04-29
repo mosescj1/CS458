@@ -3,7 +3,7 @@ import Web3 from "web3";
 
 import "./App.css";
 
-import CasinoInterface from "../build/contracts/CasinoInterface.json"
+import CasinoInterface from "./build/Casino.json"
 
 const ABI = CasinoInterface.abi
 
