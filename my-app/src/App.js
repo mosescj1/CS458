@@ -96,7 +96,7 @@ class App extends React.Component {
   async voteNumber(Word) {
     try {
       let bet = this.state.currentBet;
-      let numConv = -1;
+      let numConv;
 
       if (parseFloat(bet) < this.state.minBet) {
         alert("Bet more than the minimum amount.");
