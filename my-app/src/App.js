@@ -16,7 +16,7 @@ class app extends React.Component{
         this.state = {
             winningChoice: 0,
             numOfBets: 0,
-            minimumBet: 0,
+            minBet: 0,
             totalBets: 0,
             currentBet: 0
         };
