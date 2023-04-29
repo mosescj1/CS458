@@ -101,8 +101,8 @@ class App extends React.Component {
       if (parseFloat(bet) < this.state.minBet) {
         alert("Bet more than the minimum amount.");
       } else {
-        if (Word === "True") numConv = 0;
-        if (Word === "False") numConv = 1;
+        if (Word === "Heads") numConv = 0;
+        if (Word === "Tails") numConv = 1;
 
         const result = await this.contractInstance.methods
           .bet(numConv)
