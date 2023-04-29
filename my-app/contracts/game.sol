@@ -4,7 +4,7 @@ pragma solidity ^0.8.19;
 contract Casino {
 
     address public owner;
-    uint constant minBet = 100;
+    uint constant minBet = 1;
     uint totalBets = 0;
     address[] public players ;
     uint payout = 0;
