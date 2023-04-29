@@ -1,7 +1,7 @@
 import React from "react";
 import Web3 from "web3";
 
-import "./css/App.css";
+import "./App.css";
 
 const INFURA_KEY = "key from infura";
 
@@ -45,7 +45,6 @@ async activateWeb3() {
   }
 
   const contract = new this.web3.eth.Contract(
-    ABI,
     this.contractAddress
   );
   this.contractInstance = contract;
