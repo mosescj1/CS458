@@ -67,11 +67,11 @@ async updateState() {
     });
   let winningChoice = await this.contractInstance.methods.winningChoice().call();
     this.setState({
-      winningChoice: parseFloat(Web3.utils.fromWei(winningChoice, "ether"))
+      winningChoice: winningChoice
     });
   let numOfBets = await this.contractInstance.methods.numOfBets().call();
     this.setState({
-      numOfBets: parseFloat(Web3.utils.fromWei(numOfBets, "ether"))
+      numOfBets: parseInt(numOfBets)
     });
   let totalBets = await this.contractInstance.methods.totalBets().call();
     this.setState({
