@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.contractAddress = "0x7f9401e5f199181934ffe0747847A3Bc7ED8AB3F"; //contract address here;
+    this.contractAddress = "0x17c9aC0Cd1721958Ffd730Cf53c23A1568D33DfB"; //contract address here;
 
     //swap values to what you want
     this.validBets = ["Heads", "Tails"];

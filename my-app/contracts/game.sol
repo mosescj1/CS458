@@ -4,7 +4,7 @@ pragma solidity ^0.5.16;
 contract Casino {
 
     address public owner;
-    uint constant public minBet = 10 finney;
+    uint constant public minBet = 1 finney;
     uint public totalBets = 0;
     address[] public players ;
     uint payout = 0;
@@ -64,12 +64,13 @@ contract Casino {
         players.length = 0;
         totalBets = 0;
         numOfBets = 0;
+    
     }   
 
-    function generateRandom() private {
-        uint256 win= (block.number %10 * block.timestamp%5) %2;
+    function generateRandom() public {
+        uint256 win= block.number %2;
         if(win == 0) winningChoice = "Heads";
-        if(win == 1) winningChoice = "Tails";
+        else if(win == 1) winningChoice = "Tails";
         winner(win);
     }
 
