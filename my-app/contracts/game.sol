@@ -4,7 +4,7 @@ pragma solidity ^0.5.16;
 contract Casino {
 
     address public owner;
-    uint constant public minBet = 1;
+    uint constant public minBet = 10 finney;
     uint public totalBets = 0;
     address[] public players ;
     uint payout = 0;
@@ -25,6 +25,11 @@ contract Casino {
     constructor () public {
         owner = msg.sender;
     }
+
+    function kill() public {
+      if(msg.sender == owner) 
+        selfdestruct(msg.sender);
+   }
 
     function bet(uint choice) public payable{
         require(msg.value >= minBet);
@@ -56,7 +61,9 @@ contract Casino {
         for(uint i = 0; i < players.length; i++){
             delete playerInputs[players[i]];
         }
-        delete players;
+        players.length = 0;
+        totalBets = 0;
+        numOfBets = 0;
     }   
 
     function generateRandom() private {
@@ -65,5 +72,6 @@ contract Casino {
         if(win == 1) winningChoice = "Tails";
         winner(win);
     }
-    function fallback() public {}
+
+    function() external payable {}
 }
