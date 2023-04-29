@@ -12,7 +12,7 @@ class app extends React.Component{
         this.contractAddress = "contract address once deployed";//contract address here;
 
         //swap values to what you want
-        this.validBets = ["True","False"];
+        this.validBets = ["Heads","Tails"];
         this.state = {
             winningChoice: 0,
             numOfBets: 0,
@@ -109,28 +109,28 @@ render() {
             <h1>Bet to win Ether</h1>
 
             <div className = "main-blocks">
-                <b>Last Winning Choice:</b>
-                <span>{parseInt(this.state.winningChoicer) === 0 ? "No draws done yet" : this.state.winningChoice}</span>
+                <b>Last Winning Choice: </b>
+                <span> {parseInt(this.state.winningChoicer) === 0 ? "No draws done yet" : this.state.winningChoice}</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Minimum bet allowed:</b>
-                <span>{this.state.minimumBet}</span>
+                <b>Minimum bet allowed: </b>
+                <span> {this.state.minimumBet}</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Number of bets:</b>
-                <span>{this.state.numOfBets}</span>
+                <b>Number of bets: </b>
+                <span> {this.state.numOfBets}</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Total ether bet:</b>
-                <span>{this.state.totalBets} ether</span>
+                <b>Total ether bet: </b>
+                <span> {this.state.totalBets} ether</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Your current bet:</b>
-                <span>{this.state.currentBet} ether</span>
+                <b>Your current bet: </b>
+                <span> {this.state.currentBet} ether</span>
             </div>
 
             <br></br>
