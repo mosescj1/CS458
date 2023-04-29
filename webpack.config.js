@@ -6,6 +6,13 @@ module.exports = {
       filename: 'run.js' // The final file will be created in dist/build.js
    },
    module: {
+      resolve: {
+         fallback: {
+            crypto: require.resolve('crypto-browserify'),
+            http: require.resolve('stream-http'),
+            zlib: require.resolve('browserify-zlib')
+          },
+      },
       rules: [{
          test: /\.css$/, // To load the css in react
          use: ['style-loader', 'css-loader'],
