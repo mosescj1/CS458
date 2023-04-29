@@ -1,4 +1,4 @@
-pragma solidity ^0.8.19;
+pragma solidity ^0.5.16;
 
 
 contract Casino {
@@ -22,7 +22,7 @@ contract Casino {
 
     mapping(address => Player) public playerInputs;
     
-    constructor () {
+    constructor () public {
         owner = msg.sender;
     }
 
@@ -50,7 +50,7 @@ contract Casino {
         address payable playerAddr;
         for(uint i = 0; i < players.length; i++){
             if(playerInputs[players[i]].winnerFlag && players[i] != address(0))
-                playerAddr = payable(players[i]);
+                playerAddr = address(uint160(players[i]));
                 playerAddr.transfer(payout);
         }
         for(uint i = 0; i < players.length; i++){
@@ -65,11 +65,5 @@ contract Casino {
         if(win == 1) winningChoice = "Tails";
         winner(win);
     }
-
-    fallback() external payable{}
-
-    event Received(address,uint);
-    receive() external payable{
-        emit Received(msg.sender,msg.value);
-    }
+    function fallback() public {}
 }

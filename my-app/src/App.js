@@ -3,6 +3,10 @@ import Web3 from "web3";
 
 import "./App.css";
 
+import CasinoInterface from "./contracts/CasinoInterface.json"
+
+const ABI = CasinoInterface.abi
+
 const INFURA_KEY = "key from infura";
 
 class app extends React.Component{
@@ -45,7 +49,7 @@ async activateWeb3() {
   }
 
   const contract = new this.web3.eth.Contract(
-    this.contractAddress
+    ABI,this.contractAddress
   );
   this.contractInstance = contract;
 }
