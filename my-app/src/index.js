@@ -1,8 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Web3 from 'web3'
-import './Index.css'
-import App from "./App.js"
-import { render } from 'express/lib/response'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './Index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById("reactStuff"));
+ReactDOM.render(<App />, document.getElementById("root"));
+
+serviceWorker.unregister();

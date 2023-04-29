@@ -3,6 +3,10 @@ import Web3 from "web3";
 
 import "./App.css";
 
+import CasinoInterface from "./build/contracts/Casino.json"
+
+const ABI = CasinoInterface.abi
+
 const INFURA_KEY = "key from infura";
 
 class app extends React.Component{
@@ -12,11 +16,11 @@ class app extends React.Component{
         this.contractAddress = "contract address once deployed";//contract address here;
 
         //swap values to what you want
-        this.validBets = ["True","False"];
+        this.validBets = ["Heads","Tails"];
         this.state = {
             winningChoice: 0,
             numOfBets: 0,
-            minimumBet: 0,
+            minBet: 0,
             totalBets: 0,
             currentBet: 0
         };
@@ -45,7 +49,7 @@ async activateWeb3() {
   }
 
   const contract = new this.web3.eth.Contract(
-    this.contractAddress
+    ABI,this.contractAddress
   );
   this.contractInstance = contract;
 }
@@ -57,9 +61,9 @@ async mountedComponent(){
 
 async updateState() {
  //this will call all of the variables used in the contract to update the information whenever someone submits a bet
- const minimumBet = await this.contractInstance.methods.minimumBet().call();
+ const minBet = await this.contractInstance.methods.minBet().call();
     this.setState({
-      minimumBet: parseFloat(Web3.utils.fromWei(minimumBet, "ether"))
+      minBet: parseFloat(Web3.utils.fromWei(minBet, "ether"))
     });
   let winningChoice = await this.contractInstance.methods.winningChoice().call();
     this.setState({
@@ -85,7 +89,7 @@ async voteNumber(Word){
   let bet = this.state.currentBet;
   let numConv = -1;
 
-  if(parseFloat(bet) < this.state.minimumBet){
+  if(parseFloat(bet) < this.state.minBet){
   alert("Bet more than the min brokey!")
   }
   else{
@@ -109,28 +113,28 @@ render() {
             <h1>Bet to win Ether</h1>
 
             <div className = "main-blocks">
-                <b>Last Winning Choice:</b>
-                <span>{parseInt(this.state.winningChoicer) === 0 ? "No draws done yet" : this.state.winningChoice}</span>
+                <b>Last Winning Choice: </b>
+                <span> {parseInt(this.state.winningChoice) === 0 ? "No draws done yet" : this.state.winningChoice}</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Minimum bet allowed:</b>
-                <span>{this.state.minimumBet}</span>
+                <b>Minimum bet allowed: </b>
+                <span> {this.state.minBet}</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Number of bets:</b>
-                <span>{this.state.numOfBets}</span>
+                <b>Number of bets: </b>
+                <span> {this.state.numOfBets}</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Total ether bet:</b>
-                <span>{this.state.totalBets} ether</span>
+                <b>Total ether bet: </b>
+                <span> {this.state.totalBets} ether</span>
             </div>
 
             <div className = "main-blocks">
-                <b>Your current bet:</b>
-                <span>{this.state.currentBet} ether</span>
+                <b>Your current bet: </b>
+                <span> {this.state.currentBet} ether</span>
             </div>
 
             <br></br>
