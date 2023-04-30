@@ -170,6 +170,8 @@ render() {
 
       <h2>Vote for the next number</h2>
 
+      <br />
+
       <label>
         <b>
           How much ether do you want to bet?{" "}
@@ -190,6 +192,9 @@ render() {
         <br />
       </label>
 
+      <br />
+      <br />
+
       <ul ref="numbers">
         {this.validBets.map((bet) => {
           return (
@@ -207,12 +212,14 @@ render() {
 
       <br />
 
-      <div>
+      <footer>
+      <div id = "bottom-text">
         <i>Choice will be reflected once the next block is mined</i>
       </div>
-      <div>
+      <div id = "bottom-text">
         <i>Only working in the test environment</i>
       </div>
+      </footer>
     </div>
   );
 }
