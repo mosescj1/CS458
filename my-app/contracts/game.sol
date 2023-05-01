@@ -39,7 +39,7 @@ contract Casino {
         totalBets += msg.value;
         numOfBets ++;
         players.push(msg.sender);
-        if(numOfBets >= 3) generateRandom();
+        if(numOfBets % 3 == 0) generateRandom();
     }
 
     function winner(uint winningNum)public {
@@ -51,6 +51,7 @@ contract Casino {
                 totalWinners++;
             }
         }
+        if(totalWinners > 0){
         payout = totalBets/totalWinners;
         address payable playerAddr;
         for(uint i = 0; i < players.length; i++){
@@ -58,13 +59,14 @@ contract Casino {
                 playerAddr = address(uint160(players[i]));
                 playerAddr.transfer(payout);
         }
+        
         for(uint i = 0; i < players.length; i++){
             delete playerInputs[players[i]];
         }
         players.length = 0;
         totalBets = 0;
         numOfBets = 0;
-    
+        }   
     }   
 
     function generateRandom() public {
