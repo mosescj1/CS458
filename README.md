@@ -22,3 +22,11 @@ This is the repository for decentralized CNT Casino
 # Purpose
 
 The purpose of this project is to create a working web API and smart contract that allows users to place bets anonymously online using Ethereum. The main goal was to allow users to keep their information private while still being able to partake in the fun of some free-spirited gambling.
+
+# Sources
+
+* https://github.com/maxme/truffle-export-abi
+* https://github.com/facebook/create-react-app
+* https://github.com/bethanyuo/casino-dApp
+* https://gist.github.com/robdodson/7915c77e05a293c1a4033da5619dfc54
+* The ultimate end-to-end tutorial to create and deploy a fully decentralized Dapp in ethereum | by Merunas Grincalaitis | Ethereum Developers | Medium
