@@ -16,12 +16,25 @@ This is the repository for decentralized CNT Casino
     
 # About the authors
  * Hi my name is Nicholas Korte. I am a third year computer science student at Colorado State with an interest in the blockchain and its applications.
- * 
+ * Hi my name is Thomas Wittich currently a senior in computer science at Colorado State University.
  * 
  
 # Purpose
 
 The purpose of this project is to create a working web API and smart contract that allows users to place bets anonymously online using Ethereum. The main goal was to allow users to keep their information private while still being able to partake in the fun of some free-spirited gambling.
+
+# Setup
+
+For the most part this repo is entirely ready to run and allow users to interact with the contract.
+
+First step - Clone the repository to a local dev environment. I recommend vscode.
+Second step - There are certain things that you will need to download before you can run this code. If you do not have node.js installed on your computer please do so. You can check by running the npm -v command in your terminal.
+Third step - once you have Node.js installed you should be able to run the code. in your terminal in your IDE cd into my-app. once you have done that run npm install. This will download all of the dependencies required to run the website.
+Fourth step - run npm start. If it fails or says that you are missing dependencies try running npm audit fix --force. this will force your computer to install all of the dependencies. You may have to run this in sudo mode if it says you do not have permission. sudo su.
+Fifth step - if npm start is still giving you errors try running npm install *what the error message says you are missing*. If it compiles properly it will open up a new window that has the website.
+Sixth step - link your metamask account. If you don't have the browser extension please add it. Our contract is on the sepolia testnet so you will need sepolia eth. You can request this from several faucets. Just google sepolia eth faucet.
+Seventh step - once you have done all this and you have sepolia eth in your account you should be able to bet eth. Change the amount your betting click what you're betting on and hit confirm on the metamask popup and voila you just bet some eth!
+
 
 # Sources
 
