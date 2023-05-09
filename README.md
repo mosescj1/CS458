@@ -17,7 +17,7 @@ This is the repository for decentralized CNT Casino
 # About the authors
  * Hi my name is Nicholas Korte. I am a third year computer science student at Colorado State with an interest in the blockchain and its applications.
  * Hi my name is Thomas Wittich currently a senior in computer science at Colorado State University.
- * 
+ * Hi, I'm Cole Moses and I'm a senior in computer science at Colorado State University and this is my CS 458 term project
  
 # Purpose
 
